@@ -19,7 +19,7 @@ class LivreType extends AbstractType
     {
         $builder
             ->add('titre', TextType::class)
-            ->add('résumé', TextareaType::class, [
+            ->add('resume', TextareaType::class, [
                 'required' => false,
             ])
             ->add('auteur', TextType::class)

@@ -82,6 +82,10 @@ class LivreController extends AbstractController
             // redirige vers la liste de Livres
             return $this->redirectToRoute('app_home_listeLivres');
         }
-        return $this->render('livre/ajout.html.twig');
+        return $this->render('livre/ajout.html.twig', [
+            // tableau associatif
+            'form'=> $form,
+
+        ]);
     }
 }
