@@ -12,7 +12,7 @@
 			font: 18px / 1.5 sans-serif;
 		}
 		.example-wrapper code {
-			background: #F5F5F5; 
+			background: #F5F5F5;
 			padding: 2px 6px;
 		}
 	</style>
@@ -20,13 +20,19 @@
 	<div class="example-wrapper">
 		<h1>Hello ceci est la page d'index  ✅</h1>
 
-		<h2>Voici la liste des livres : </h2>
+		<h2>Voici la liste des livres :
+		</h2>
 		<ul>
-            {# Affichage de - Liste - des livres #}
-            {% for livre in clivres %}
-                <li>
-                <a href="{{path('app_detailLivre)}}"></a></li>
+			{# Affichage de - Liste - des livres #}
+			{% for livre in livres %}
+				<li>
+					{# {id:livre.id} clef valeur du Json #}
 
+					<a href="{{path('app_detailLivre', {id:livre.id})}}">
+                        {{livre.titre}}
+					</a>
+				</li>
+			{% endfor %}
 		</ul>
 	</div>
 {% endblock %}

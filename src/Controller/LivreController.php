@@ -7,7 +7,7 @@ use App\Form\LivreType;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\BrowserKit\Request;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -44,8 +44,9 @@ class LivreController extends AbstractController
 
     // Création de Détail Livre
     #[Route('/livre/detail/{id}', name: 'app_detailLivre')]
-    public function detail(Livre $livre, EntityManagerInterface $entityManager): Response
+    public function detail(Livre $livre): Response
     {
+        //dd($livre);
         // je prends l'id
         return $this->render('livre/detail.html.twig', [
             'livre' => $livre,
@@ -83,6 +84,4 @@ class LivreController extends AbstractController
         }
         return $this->render('livre/ajout.html.twig');
     }
-
-
 }

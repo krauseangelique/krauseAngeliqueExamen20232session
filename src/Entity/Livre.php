@@ -18,7 +18,7 @@ class Livre
     private ?string $titre = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $résumé = null;
+    private ?string $resume = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $auteur = null;
@@ -52,14 +52,14 @@ class Livre
         return $this;
     }
 
-    public function getRésumé(): ?string
+    public function getResume(): ?string
     {
-        return $this->résumé;
+        return $this->resume;
     }
 
-    public function setRésumé(?string $résumé): static
+    public function setResume(?string $resume): static
     {
-        $this->résumé = $résumé;
+        $this->resume = $resume;
 
         return $this;
     }

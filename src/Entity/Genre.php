@@ -25,6 +25,8 @@ class Genre
     #[ORM\OneToMany(mappedBy: 'genre', targetEntity: Livre::class)]
     private Collection $livres;
 
+
+
     public function __construct()
     {
         $this->livres = new ArrayCollection();
@@ -88,4 +90,21 @@ class Genre
 
         return $this;
     }
+
+/* pour récupérer l'objet -genre: 
+Proxies\__CG__\App\Entity
+\
+Genre {#723 ▼
+    -id: 1
+    -nom: ? ?string
+    -description: ? ?string
+
+    On va utiliser la méthode __toString  pour afficher l'objet genre (car sans la méthode, on ne peut pas afficher d'objet !)
+*/
+public function __toString()
+{
+    // je récupère l'attribut du genre ici 'nom' du genre via son getter
+    return $this-> getNom();   
+}
+
 }
