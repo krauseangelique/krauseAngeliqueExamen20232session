@@ -20,8 +20,18 @@
 		<ul>
 		
 			{% for genre in genres %}
-				<li>
+				<li class="row">
+					<div class="col-3">
 					{{genre.nom}}
+					</div>
+					<div class="col-3">
+					{{genre.description}}
+					</div>
+					<div class="col-3">
+					<a href="{{path('app_modifierGenre', {'id':genre.id})}}" class="btn btn-primary">Modifier</a>
+					
+					</div>
+					
 				</li>
 			{% endfor %}
 

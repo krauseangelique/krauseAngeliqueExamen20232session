@@ -34,7 +34,7 @@ class GenreController extends AbstractController
         // Création d'un genre
         $genre = new Genre();
     
-        // Création du formulaire pour le genre
+        // Création du formulaire pour le genre : AJOUT d'un genre
         $formGenre = $this->createForm(GenreType::class, $genre);
         $formGenre->handleRequest($request);
 
@@ -54,6 +54,32 @@ class GenreController extends AbstractController
             'form'=> $formGenre,
         ]);
 
+    }
+
+    // Création d'une route pour MODIFIER le genre
+    #[Route('/genre/modifier/{id}', name: 'app_modifierGenre')]
+    public function modifier(Request $request, Genre $genre, EntityManagerInterface $entityManager): Response
+    {
+        //création du formulaire
+        $formGenre = $this->createForm(GenreType::class, $genre);  
+        
+        // préparation de la requête
+        $formGenre->handleRequest($request);
+
+        if ($formGenre->isSubmitted() && $formGenre->isValid()) {
+            // récupération des datas
+            $genre = $formGenre->getData();
+
+            // DB
+            $entityManager->flush($genre);
+
+            //redirige vers la liste des Genres
+            return $this->redirectToRoute('app_genre');
+        }
+        return $this->render('genre/modifier.html.twig', [
+
+            'form' => $formGenre
+        ]);
     }
 
 }
