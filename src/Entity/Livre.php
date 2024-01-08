@@ -123,4 +123,10 @@ class Livre
 
         return $this;
     }
+
+    // j'ajoute la methode __ToString() pour afficher l'echo de mon objet
+    public function __toString()
+    {
+        return 'mon objet Livre';
+    }
 }

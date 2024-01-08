@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Genre;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -25,4 +26,33 @@ class GenreController extends AbstractController
             'genres' => $genres,
         ]);
     }
+
+    #[Route('/genre/ajouter', name:'app_genre_ajouter')]
+    public function ajouterGenre(Request $request, EntityManagerInterface $entityManager): Response 
+    {
+        // Création d'un genre
+        $genre = new Genre();
+    
+        // Création du formulaire pour le genre
+        $formGenre = $this->createForm(GenreType::class, $genre);
+        $formGenre->handleRequest($request);
+
+        if($formGenre->isSubmitted() && $formGenre->isValid()) {
+            $genre = $formGenre->getData();
+
+            // pour la DB
+            $entityManager->persist($genre);
+            $entityManager->flush();
+
+            // redirige vers la liste des genres
+            return $this->redirectToRoute('app_genre');
+        }
+
+        return $this->render('genre/index.html.twig', [
+            //tableau associatif
+            'form'=> $formGenre,
+        ]);
+
+    }
+
 }
