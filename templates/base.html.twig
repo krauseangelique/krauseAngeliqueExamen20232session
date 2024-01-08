@@ -22,6 +22,29 @@
 		{% endblock %}
 	</head>
 	<body>
-		{% block body %}{% endblock %}
+		<header>
+			{% block nav %}
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<div class="container-fluid">
+						<a href="{{ path('app_home_listeLivres') }}">
+							<img class="navbar-brand" src="{{asset('images/logoLivres/purepng.com-booksbookillustratedwrittenprintedliterature-14215264519035vkku.png')}}" alt="mon catalogue de livres">
+						</a>
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav e-auto mb-2 mb-lg-0">
+								<li class="nav-item">
+									<a class="nav-link active" aria-current="page" href="{{ path('app_home_listeLivres') }}">Home : liste des livres</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{path('app_genre')}}">Genres de livres</a>
+								</li>
+								<li>
+									<a class="nav-link" href="{{path('app_livre_ajouter')}}">Ajout d'un livre'</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				{% endblock %}
+		</header>
+			{% block body %}{% endblock %}
 	</body>
 </html>
