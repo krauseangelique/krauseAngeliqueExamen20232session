@@ -60,6 +60,7 @@ class LivreController extends AbstractController
     #[Route('/livre/ajouter', name: 'app_livre_ajouter')]
     public function ajouter(Request $request, EntityManagerInterface $entityManager): Response
     {
+
         // Création d'un livre
         $livre = new Livre();
         // set de la date d'ajout à la date de création
@@ -82,6 +83,7 @@ class LivreController extends AbstractController
             // redirige vers la liste de Livres
             return $this->redirectToRoute('app_home_listeLivres');
         }
+        
         return $this->render('livre/ajout.html.twig', [
             // tableau associatif
             'form'=> $form,
