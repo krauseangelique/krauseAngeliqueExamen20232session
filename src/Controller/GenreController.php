@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Genre;
+use App\Form\GenreType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -48,7 +49,7 @@ class GenreController extends AbstractController
             return $this->redirectToRoute('app_genre');
         }
 
-        return $this->render('genre/index.html.twig', [
+        return $this->render('genre/ajout.html.twig', [
             //tableau associatif
             'form'=> $formGenre,
         ]);
